@@ -18,24 +18,71 @@ function verificar() {
         // armazena o fsex
         var genero = ''
         // cria a variavel de genero em branco para atribuir um valor depois
+
+        //==========================================================
         var img = document.createElement('img')
         // cria uma variavel de imagem e cria um img
         img.setAttribute('id', 'foto')
-        // deixa no esquema para atribuir uma foto depois
-        if (fsex[1].checked) {
+        // atribui um ID na foto
+        //==========================================================
+
+        if (fsex[0].checked) {
+            // se fsex for selecionado a segunda caixa e uma muie
+            genero = 'Homem'
+            var idade = ano - parseInt(fano)
+            if (idade >= 0 && idade < 10) {
+                //Criança
+                img.setAttribute('src', 'bebeH.jpg')
+                img.setAttribute('width', '100');
+                img.setAttribute('height', '100');
+            } else if (idade < 21) {
+                // Jovem
+                img.setAttribute('src', 'jovemH.jpg')
+                img.setAttribute('width', '100');
+                img.setAttribute('height', '100');
+            } else if (idade < 50) {
+                // Adulto
+                img.setAttribute('src', 'adultoH.jpg')
+                img.setAttribute('width', '100');
+                img.setAttribute('height', '100');
+            } else {
+                //Idoso
+                img.setAttribute('src', 'idosoH.jpg')
+                img.setAttribute('width', '100');
+                img.setAttribute('height', '100');
+            }
+        } else if (fsex[1].checked) {
             // se fsex for selecionado a segunda caixa e uma muie
             genero = 'Mulher'
-        } else {
-            // senao e um homi
-            genero = 'Homem'
-        }
-
-        var idade = ano - parseInt(fano)
-        // calculo da idade ano - ano digitado
+            var idade = ano - parseInt(fano)
+            if (idade >= 0 && idade < 10) {
+                //Criança
+                img.setAttribute('src', 'bebeM.jpg')
+                img.setAttribute('width', '100');
+                img.setAttribute('height', '100');
+            } else if (idade < 21) {
+                // Jovem
+                img.setAttribute('src', 'jovemM.jpg')
+                img.setAttribute('width', '100');
+                img.setAttribute('height', '100');
+            } else if (idade < 50) {
+                // Adulto
+                img.setAttribute('src', 'adultoM.jpg')
+                img.setAttribute('width', '100');
+                img.setAttribute('height', '100');
+            } else {
+                //Idosa
+                img.setAttribute('src', 'idosoM.jpg')
+                img.setAttribute('width', '100');
+                img.setAttribute('height', '100');
+            }
+        } 
 
         res.style.textAlign = 'center'
         // css ne
         res.innerHTML = `Detectamos ${genero} com ${idade} anos.`
         // atribui um html na res do html
+        res.appendChild(img)
+        // Adicionar um elemento
     }
 }
